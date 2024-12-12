@@ -24,7 +24,8 @@ export default function Options(props) {
   const [panelOutput, setPanelOutput] = useState(options.panelOutput || "");
 
   const onUpdateInput = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    value = value > 0 ? value : 1;
 
     // Update the state based on the input name
     switch (name) {
@@ -88,6 +89,7 @@ export default function Options(props) {
         title="roofHeight"
         tooltip="Dachhöhe"
         unit="cm"
+        min="0"
         type="number"
         onChange={onUpdateInput}>
         <AiOutlineColumnHeight />
@@ -98,6 +100,7 @@ export default function Options(props) {
         title="roofWidth"
         tooltip="Dachbreite"
         unit="cm"
+        min="0"
         type="number"
         onChange={onUpdateInput}>
         <AiOutlineColumnWidth />
@@ -110,6 +113,7 @@ export default function Options(props) {
         title="panelHeight"
         tooltip="Breite des Panels"
         unit="cm"
+        min="0"
         type="number"
         onChange={onUpdateInput}>
         <AiOutlineColumnHeight />
@@ -120,6 +124,7 @@ export default function Options(props) {
         title="panelWidth"
         tooltip="Höhe des Panels"
         unit="cm"
+        min="0"
         type="number"
         onChange={onUpdateInput}>
         <AiOutlineColumnWidth />
@@ -132,6 +137,7 @@ export default function Options(props) {
         title="panelOutput"
         tooltip="Leistung eines Panels"
         unit="Wp"
+        min="0"
         type="number"
         onChange={onUpdateInput}>
         <IoFlashOutline />
@@ -144,6 +150,8 @@ export default function Options(props) {
         title="roofPadding"
         tooltip="Innenabstand Dachkante"
         unit="cm"
+        min="0"
+        step="1"
         type="number"
         onChange={onUpdateInput}>
         <RxPadding />
@@ -155,6 +163,8 @@ export default function Options(props) {
         tooltip="Abstand zwischen Panelen"
         unit="cm"
         type="number"
+        min="0"
+        step="1"
         onChange={onUpdateInput}>
         <RxMargin />
       </Input>

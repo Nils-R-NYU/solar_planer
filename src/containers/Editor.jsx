@@ -21,7 +21,6 @@ export default function Editor(props) {
 
   const optionsUpdated = (newOptions) => {
     setOptions(newOptions);
-    console.log();
   };
 
   const panelCountUpdated = (numberOfPanels) => {

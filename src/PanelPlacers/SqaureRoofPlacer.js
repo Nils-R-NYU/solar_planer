@@ -6,8 +6,8 @@ export default class SqaureRoofPlacer extends PanelPlacer {
     const ctx = this.ctx;
     ctx.beginPath();
     ctx.rect(
-      this.border,
-      this.border,
+      0,
+      0,
       Number(this.options.roofWidth),
       Number(this.options.roofHeight)
     );
@@ -16,8 +16,10 @@ export default class SqaureRoofPlacer extends PanelPlacer {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.lineWidth = Number(this.options.roofPadding) * 2;
-    ctx.strokeStyle = "#bfbfbf";
-    ctx.stroke();
+    ctx.strokeStyle = "#FFE0E7";
+    if (this.options.roofPadding > 0) {
+      ctx.stroke();
+    }
   }
 
   placePanels() {
@@ -40,23 +42,16 @@ export default class SqaureRoofPlacer extends PanelPlacer {
       (roofHeight - 2 * roofPadding) / (panelHeight + panelMargin)
     );
 
-    console.log(`RoofPadding: ${roofPadding}, PanelMargin: ${panelMargin}`);
-    console.log(`Roofwidth: ${roofWidth}, Panewidth: ${panelWidth}`);
-    console.log(`Roofheight: ${roofHeight}, Paneheight: ${panelHeight}`);
-    console.log(`Cols: ${cols}, Rows: ${rows}`);
-    console.log("");
     if (cols === 0 || rows === 0) {
       console.error("Invalid roof or Panel dimensions");
       return 0;
     }
 
     const xStart =
-      this.border +
       roofWidth / 2 -
       panelWidth / 2 +
       (cols % 2 === 0 ? panelWidth / 2 + panelMargin / 2 : 0);
     const yStart =
-      this.border +
       roofHeight / 2 -
       panelHeight / 2 +
       (rows % 2 === 0 ? panelHeight / 2 + panelMargin / 2 : 0);

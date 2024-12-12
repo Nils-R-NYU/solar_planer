@@ -9,8 +9,8 @@ export default function Canvas(props) {
   const { options, panelCountUpdated } = props;
 
   const border = 2;
-  const canvasWidth = Number(options.roofWidth) + 2 * border;
-  const canvasHeight = Number(options.roofHeight) + 2 * border;
+  const canvasWidth = Number(options.roofWidth);
+  const canvasHeight = Number(options.roofHeight);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,7 +41,12 @@ export default function Canvas(props) {
 
   return (
     <div className="w-8/12 h-full flex items-center justify-center overflow-hidden">
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />
+      <canvas
+        ref={canvasRef}
+        width={canvasWidth}
+        height={canvasHeight}
+        style={{ border: "1px solid black" }}
+      />
     </div>
   );
 }
