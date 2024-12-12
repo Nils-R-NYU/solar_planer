@@ -40,7 +40,7 @@ export default function Canvas(props) {
   }, [options, canvasWidth, canvasHeight, panelCountUpdated]);
 
   return (
-    <div className="w-3/4 h-full flex items-center justify-center overflow-hidden">
+    <div className="w-8/12 h-full flex items-center justify-center overflow-hidden">
       <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />
     </div>
   );

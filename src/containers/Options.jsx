@@ -9,6 +9,7 @@ import {
   PiTriangleBold,
 } from "react-icons/pi";
 import { AiOutlineColumnHeight, AiOutlineColumnWidth } from "react-icons/ai";
+import { IoFlashOutline } from "react-icons/io5";
 
 export default function Options(props) {
   const { optionsUpdated, options, panelCount } = props;
@@ -20,6 +21,7 @@ export default function Options(props) {
   const [roofPadding, setRoofPadding] = useState(options.roofPadding || "");
   const [panelMargin, setPanelMargin] = useState(options.panelMargin || "");
   const [roofType, setRoofType] = useState(options.roofType || 0);
+  const [panelOutput, setPanelOutput] = useState(options.panelOutput || 0);
 
   const onUpdateInput = (e) => {
     const { name, value } = e.target;
@@ -28,6 +30,9 @@ export default function Options(props) {
     switch (name) {
       case "roofType":
         setRoofType(value);
+        break;
+      case "panelCount":
+        setPanelOutput(value);
         break;
       case "roofWidth":
         setRoofWidth(value);
@@ -60,16 +65,14 @@ export default function Options(props) {
       panelHeight: name === "panelHeight" ? value : panelHeight,
       roofPadding: name === "roofPadding" ? value : roofPadding,
       panelMargin: name === "panelMargin" ? value : panelMargin,
+      panelCount: name === "panelCount" ? value : panelCount,
+      panelOutput: name === "panelOutput" ? value : panelOutput,
     });
   };
 
   return (
     <div className="w-1/4 height-100 border-l-2 bg-white p-8">
       <h2>Einstellungen</h2>
-
-      <h3>Resultierende Produktion</h3>
-      <p>{panelCount} Panele</p>
-      <p>{panelCount * 48} Kwh</p>
 
       <h3>Dachform</h3>
       <IconSelector name="roofType" onChange={onUpdateInput}>
@@ -120,6 +123,18 @@ export default function Options(props) {
         type="number"
         onChange={onUpdateInput}>
         <AiOutlineColumnWidth />
+      </Input>
+
+      <h3>Panel-Leistung</h3>
+      <Input
+        name="panelOutput"
+        value={panelOutput}
+        title="panelOutput"
+        tooltip="Leistung eines Panels"
+        unit="Wp"
+        type="number"
+        onChange={onUpdateInput}>
+        <IoFlashOutline />
       </Input>
 
       <h3>Abstände</h3>

@@ -7,7 +7,7 @@ export default function App() {
     <div className="flex flex-col h-screen">
       <Header>
         <PiSolarPanelFill className="mr-4 text-4xl text-blue-600" />
-        <h1>Solar Planer</h1>
+        <h1>SolarPlaner</h1>
       </Header>
       <Editor />
     </div>
