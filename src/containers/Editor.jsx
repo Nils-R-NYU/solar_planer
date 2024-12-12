@@ -21,6 +21,7 @@ export default function Editor(props) {
 
   const optionsUpdated = (newOptions) => {
     setOptions(newOptions);
+    console.log();
   };
 
   const panelCountUpdated = (numberOfPanels) => {
@@ -29,13 +30,9 @@ export default function Editor(props) {
 
   return (
     <div className="width-100 height-100 flex flex-grow bg-zinc-100">
-      <Results options={options} />
+      <Results options={options} panelCount={panelCount} />
       <Canvas options={options} panelCountUpdated={panelCountUpdated} />
-      <Options
-        options={options}
-        panelCount={panelCount}
-        optionsUpdated={optionsUpdated}
-      />
+      <Options options={options} optionsUpdated={optionsUpdated} />
     </div>
   );
 }

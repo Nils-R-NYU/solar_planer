@@ -21,7 +21,7 @@ export default function Options(props) {
   const [roofPadding, setRoofPadding] = useState(options.roofPadding || "");
   const [panelMargin, setPanelMargin] = useState(options.panelMargin || "");
   const [roofType, setRoofType] = useState(options.roofType || 0);
-  const [panelOutput, setPanelOutput] = useState(options.panelOutput || 0);
+  const [panelOutput, setPanelOutput] = useState(options.panelOutput || "");
 
   const onUpdateInput = (e) => {
     const { name, value } = e.target;
@@ -31,7 +31,7 @@ export default function Options(props) {
       case "roofType":
         setRoofType(value);
         break;
-      case "panelCount":
+      case "panelOutput":
         setPanelOutput(value);
         break;
       case "roofWidth":
@@ -125,7 +125,7 @@ export default function Options(props) {
         <AiOutlineColumnWidth />
       </Input>
 
-      <h3>Panel-Leistung</h3>
+      <h3>Panelleistung</h3>
       <Input
         name="panelOutput"
         value={panelOutput}
